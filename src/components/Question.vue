@@ -4,22 +4,13 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Options, Vue } from 'vue-class-component'
-import Answer from '@/components/Answer.vue'
-
-@Options({
-  name: 'Question',
+<script>
+export default {
   props: {
     value: {
       type: String,
       required: true
     }
-  },
-  components: {
-    Answer
   }
-})
-
-export default class Question extends Vue {}
+}
 </script>

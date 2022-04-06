@@ -1,13 +1,11 @@
 <template>
   <div class="timer button_outline">
-    {{ formmatedTime }}
+    {{ formattedTime }}
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Options } from 'vue-class-component'
-
-@Options({
+<script>
+export default {
   name: 'Timer',
   props: {
     duration: {
@@ -22,9 +20,9 @@ import { Vue, Options } from 'vue-class-component'
     }
   },
   computed: {
-    formmatedTime ():string {
-      let minutes: number | string = Math.floor(this.currentTime / 60)
-      let seconds: number | string = this.currentTime % 60
+    formattedTime () {
+      let minutes = Math.floor(this.currentTime / 60)
+      let seconds = this.currentTime % 60
 
       minutes = minutes.toString().length > 1 ? minutes : `0${minutes}`
       seconds = seconds.toString().length > 1 ? seconds : `0${seconds}`
@@ -48,8 +46,8 @@ import { Vue, Options } from 'vue-class-component'
     stopTimer () {
       clearTimeout(this.timer)
     },
-    getSeconds (time:string):number {
-      const [minutes, seconds]:string[] = time.split(':')
+    getSeconds (time) {
+      const [minutes, seconds] = time.split(':')
       return (parseInt(minutes) * 60) + parseInt(seconds)
     }
   },
@@ -58,7 +56,5 @@ import { Vue, Options } from 'vue-class-component'
       if (time === 0) this.stopTimer()
     }
   }
-})
-
-export default class Timer extends Vue {}
+}
 </script>

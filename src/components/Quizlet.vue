@@ -56,16 +56,14 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Options, Vue } from 'vue-class-component'
+<script>
+import Answer from './Answer.vue'
+import Introduction from './Introduction.vue'
+import Question from './Question.vue'
+import ProgressBar from './ProgressBar.vue'
+import Timer from './Timer.vue'
 
-import Answer from '@/components/Answer.vue'
-import Introduction from '@/components/Introduction.vue'
-import Question from '@/components/Question.vue'
-import ProgressBar from '@/components/ProgressBar.vue'
-import Timer from '@/components/Timer.vue'
-
-@Options({
+export default {
   name: 'Quizlet',
   props: {
     quizlet: {
@@ -96,15 +94,15 @@ import Timer from '@/components/Timer.vue'
     }
   },
   computed: {
-    getQuestions ():[] {
+    getQuestions () {
       return this.quizlet.questions
     },
-    currentQuestion (): { id: string, question: string, answers: [] } {
+    currentQuestion () {
       return this.getQuestions[this.count]
     }
   },
   methods: {
-    selectAnswer (answer: { id: number, value: number | string }) {
+    selectAnswer (answer) {
       this.updateAnswers(answer)
       this.count++
       if (this.count === this.getQuestions.length) this.$emit('finishedQuizlet')
@@ -112,14 +110,12 @@ import Timer from '@/components/Timer.vue'
     startQuizlet () {
       this.hasQuizStarted = true
     },
-    updateAnswers (answer: { id: number, value: number | string }) {
+    updateAnswers (answer) {
       this.results.push({
         questionID: this.currentQuestion.id,
         answer
       })
     }
   }
-})
-
-export default class Quizlet extends Vue {}
+}
 </script>

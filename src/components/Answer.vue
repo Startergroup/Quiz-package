@@ -7,27 +7,18 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Options, Vue } from 'vue-class-component'
-
-@Options({
+<script>
+export default {
   name: 'Answer',
   props: {
     answer: {
-      id: Number,
-      value: String || Number
+      type: Object,
+      required: true
     },
     classes: {
       type: String,
       default: 'button button_primary'
     }
-  },
-  emits: {
-    onClick (answer: { id: number, value: string | number }) {
-      return answer
-    }
   }
-})
-
-export default class Answer extends Vue {}
+}
 </script>

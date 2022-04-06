@@ -13,10 +13,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Options, Vue } from 'vue-class-component'
-
-@Options({
+<script>
+export default {
   name: 'ProgressBar',
   props: {
     currentNumberQuestion: {
@@ -38,7 +36,5 @@ import { Options, Vue } from 'vue-class-component'
       }
     }
   }
-})
-
-export default class ProgressBar extends Vue {}
+}
 </script>

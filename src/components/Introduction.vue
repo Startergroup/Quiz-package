@@ -8,10 +8,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Options } from 'vue-class-component'
-
-@Options({
+<script>
+export default {
   name: 'Introduction',
   props: {
     title: {
@@ -20,12 +18,10 @@ import { Vue, Options } from 'vue-class-component'
     }
   },
   methods: {
-    async handleClick (func: () => void = () => false) {
+    async handleClick (func) {
       await func()
       this.$emit('startQuizlet')
     }
   }
-})
-
-export default class Introduction extends Vue {}
+}
 </script>
