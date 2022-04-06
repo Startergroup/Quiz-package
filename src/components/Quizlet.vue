@@ -60,7 +60,7 @@
 import { Options, Vue } from 'vue-class-component'
 
 import Answer from '@/components/Answer.vue'
-import Introduction from '@/components/Introduction/Introduction.vue'
+import Introduction from '@/components/Introduction.vue'
 import Question from '@/components/Question.vue'
 import ProgressBar from '@/components/ProgressBar.vue'
 import Timer from '@/components/Timer.vue'

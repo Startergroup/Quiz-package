@@ -2,7 +2,7 @@
   "name": "quizlet",
   "version": "0.1.0",
   "private": true,
-  "main": "./lib/index.common.js",
+  "main": "./lib/vue-quizlet.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name vue-quizlet src/index.ts",
