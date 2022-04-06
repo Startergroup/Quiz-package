@@ -1,0 +1,24 @@
+@import '../_variables';
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+  flex-basis: 49%;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+
+  &_primary {
+    background: $primary-color;
+    color: #fff;
+  }
+
+  &_outline {
+    background: transparent;
+    border: thin solid $primary-color;
+    color: $primary-color;
+  }
+}
