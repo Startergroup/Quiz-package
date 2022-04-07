@@ -1,24 +1,56 @@
-# startergroup-quizlet
+# Quizlet
 
-## Project setup
+###Basic usage
 ```
-npm install
+<Quizlet
+  :quizlet="quizlet"
+  :finish-quizlet="finishHandler($event)"
+>
+  <template #introductionForm="{ startQuizlet }">
+      <IntroductionForm :start-quizlet="startQuizlet" />
+  </template>
+</Quizlet>
+```
+IntroductionForm it's your component for processing the start of the quiz
+
+### Props
+```
+quizlet: {
+  _id: String,
+  isActive: Boolean,
+  introductionText: String,
+  duration: String,
+  logoURL: String,
+  section: String,
+  questions: Array
+}
+
+questions: [
+  {
+    question: String,
+    answers: []
+  }
+]
+
+answers: [
+  {
+    value: String || Number
+  }
+]
 ```
 
-### Compiles and hot-reloads for development
+### Events
 ```
-npm run serve
+@finish-quizlet
+
+returns {
+  quizletID: Number,
+  answers: []
+}
 ```
 
-### Compiles and minifies for production
+###Slots
 ```
-npm run build
+introductionForm
+finalFrame
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

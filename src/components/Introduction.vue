@@ -18,9 +18,9 @@ export default {
     }
   },
   methods: {
-    async handleClick (func) {
+    async handleClick (func = () => {}) {
       await func()
-      this.$emit('startQuizlet')
+      this.$emit('startGame')
     }
   }
 }

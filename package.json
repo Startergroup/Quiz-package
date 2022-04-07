@@ -1,10 +1,10 @@
 {
   "name": "startergroup-quizlet",
-  "version": "0.1.0",
+  "version": "0.6.0",
   "main": "./lib/startergroup-quizlet.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name startergroup-quizlet src/components/quizlet.vue",
+    "build": "vue-cli-service build --target lib --name startergroup-quizlet src/lib.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

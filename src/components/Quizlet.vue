@@ -6,7 +6,7 @@
     >
       <Introduction
         :title="quizlet.introductionText"
-        @start-quizlet="startQuizlet"
+        @startGame="startGame"
       >
         <template #form="{ startQuizlet }">
           <slot
@@ -38,7 +38,7 @@
           v-for="(answer, index) in currentQuestion.answers"
           :key="index"
           :answer="answer"
-          @on-click="selectAnswer($event)"
+          @onClick="selectAnswer($event)"
         />
       </div>
 
@@ -49,7 +49,7 @@
     </div>
 
     <div v-else>
-      <slot name="frameFinished">
+      <slot name="finalFrame">
         <p class="quizlet__finish">Спасибо за участие</p>
       </slot>
     </div>
@@ -67,16 +67,8 @@ export default {
   name: 'Quizlet',
   props: {
     quizlet: {
-      introductionText: String,
-      duration: String,
-      logoURL: String,
-      questions: [
-        {
-          id: String,
-          question: String,
-          answers: Array
-        }
-      ]
+      type: Object,
+      required: true
     }
   },
   components: {
@@ -90,7 +82,10 @@ export default {
     return {
       count: 0,
       hasQuizStarted: false,
-      results: []
+      results: {
+        _id: null,
+        answers: []
+      }
     }
   },
   computed: {
@@ -105,16 +100,17 @@ export default {
     selectAnswer (answer) {
       this.updateAnswers(answer)
       this.count++
-      if (this.count === this.getQuestions.length) this.$emit('finishedQuizlet')
+
+      if (this.count === this.getQuestions.length) {
+        this.results._id = this.quizlet._id
+        this.$emit('finishQuizlet', { results: this.results })
+      }
     },
-    startQuizlet () {
+    startGame () {
       this.hasQuizStarted = true
     },
     updateAnswers (answer) {
-      this.results.push({
-        questionID: this.currentQuestion.id,
-        answer
-      })
+      this.results.answers.push(answer)
     }
   }
 }
